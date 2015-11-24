@@ -1,7 +1,9 @@
 'use strict';
 
 const monument = require('monument')
-    , defaultPort = 3000;
+    , defaultPort = 3030;
+
+require('./data/family');
 
 monument.server({
     routePath: './routes'
