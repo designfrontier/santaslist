@@ -13,6 +13,11 @@ const events = require('monument').events
             , 'Rachel'
             , 'Caleb'
             , 'Joel'
+            , 'Grandmommy'
+            , 'Aunt Nancy'
+            , 'Dad'
+            , 'Steve'
+            , 'Katie'
         ]
     };
 
