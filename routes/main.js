@@ -18,6 +18,11 @@ const events = require('monument').events
 
 events.on('route:/:get', (connection) => {
     events.once('data:set:family', (family) => {
+        if (typeof family === 'undefined') {
+            events.emit('error:404', connection);
+            return;
+        }
+
         const offset = generateOffset(family.yearStarted, family.randomSeed, family.members.length)
 
             , recievers = family.members.map((person, index, arr) => {
@@ -37,6 +42,11 @@ events.on('route:/:get', (connection) => {
 
 events.on('route:/:id:get', (connection) => {
     events.once(`data:set:family:${connection.params.id}`, (family) => {
+        if (typeof family === 'undefined') {
+            events.emit('error:404', connection);
+            return;
+        }
+
         const offset = generateOffset(family.yearStarted, family.randomSeed, family.members.length)
 
             , recievers = family.members.map((person, index, arr) => {
