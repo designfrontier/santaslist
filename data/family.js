@@ -10,7 +10,6 @@ const events = require('monument').events
             , randomSeed: 11984002930839366
             , members: [
                 'Daniel'
-                , 'Sarah'
                 , 'Gabriel'
                 , 'Rachel'
                 , 'Caleb'
@@ -18,7 +17,6 @@ const events = require('monument').events
                 , 'Grandmommy'
                 , 'Aunt Nancy'
                 , 'Dad'
-                , 'Steve'
                 , 'Katie'
                 , 'Ashley'
             ]
