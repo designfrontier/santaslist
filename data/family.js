@@ -19,6 +19,7 @@ const events = require('monument').events
                 , 'Dad'
                 , 'Katie'
                 , 'Ashley'
+                , 'Aunt Susan'
             ]
         }
         , nederland: {
