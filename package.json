@@ -5,7 +5,7 @@
   "main": "app.js",
   "dependencies": {
     "dot": "^1.0.3",
-    "monument": "^2.1.0-rc.3",
+    "monument": "^3.1.1",
     "node-cached": "^1.0.0",
     "seedrandom": "^2.4.2"
   },
