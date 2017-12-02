@@ -27,7 +27,7 @@ events.on('route:/:get', (connection) => {
             , recievers = family.members.map((person, index, arr) => {
                 return offset + index >= arr.length ?
                     arr[index + offset - arr.length] :
-                    arr[index + offset]
+                    arr[index + offset];
             });
 
         connection.res.send(mainTemplate({ family: family.members, targets: recievers }));
