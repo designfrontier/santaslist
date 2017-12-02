@@ -49,11 +49,6 @@ events.on('data:get:family', (id) => {
         , cached = hasId ? cache.get(`data.family.${id}`) : cache.get('data.family');
 
     if (cached === null && !fetchingStore['data.family']) {
-        // get data from async source faked here by process.nextTick
-        // fetchingStore['data.family'] = true;
-
-        // fetchingStore['data.family'] = false;
-
         if (hasId) {
             events.emit(`data:set:family:${id}`, families[id]);
             cache.add(`data.family.${id}`, families[id], 300000);

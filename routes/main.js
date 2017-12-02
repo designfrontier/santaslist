@@ -8,9 +8,8 @@ const events = require('monument').events
         const rng = seedRandom(seed);
         let offsetNew;
 
-        for (let i = 0; i <= startYear - new Date().getFullYear(); i++) {
+        for (let i = 0; i <= new Date().getFullYear() - startYear; i++) {
             offsetNew = Math.floor(rng() * arraySize);
-            console.log('count: ' + i, offsetNew);
         }
 
         return offsetNew;
@@ -26,11 +25,9 @@ events.on('route:/:get', (connection) => {
         const offset = generateOffset(family.yearStarted, family.randomSeed, family.members.length)
 
             , recievers = family.members.map((person, index, arr) => {
-                if (offset + index >= arr.length) {
-                    return arr[index + offset - arr.length];
-                } else {
-                    return arr[index + offset];
-                }
+                return offset + index >= arr.length ?
+                    arr[index + offset - arr.length] :
+                    arr[index + offset]
             });
 
         connection.res.send(mainTemplate({ family: family.members, targets: recievers }));
@@ -48,8 +45,8 @@ events.on('route:/:id:get', (connection) => {
         }
 
         const offset = generateOffset(family.yearStarted, family.randomSeed, family.members.length)
-
             , recievers = family.members.map((person, index, arr) => {
+                console.log(offset);
                 if (offset + index >= arr.length) {
                     return arr[index + offset - arr.length];
                 } else {
