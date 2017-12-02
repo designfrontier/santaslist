@@ -24,11 +24,14 @@ describe('Error Handler Tests', () => {
         let result;
 
         events.emit('error:401', fakeConnection);
-        result = fakeConnection.out();
 
-        assert.isObject(result.headers);
-        assert.strictEqual(fakeConnection.res.statusCode, statusCode);
-        assert.strictEqual(result.response, response401);
+        process.nextTick(() => {
+            result = fakeConnection.out();
+
+            assert.isObject(result.headers);
+            assert.strictEqual(fakeConnection.res.statusCode, statusCode);
+            assert.strictEqual(result.response, response401);
+        });
     });
 
     it('should respond to error:404 with a missing file message', () => {
@@ -37,11 +40,14 @@ describe('Error Handler Tests', () => {
         let result;
 
         events.emit('error:404', fakeConnection);
-        result = fakeConnection.out();
 
-        assert.isObject(result.headers);
-        assert.strictEqual(fakeConnection.res.statusCode, statusCode);
-        assert.strictEqual(result.response, response404);
+        process.nextTick(() => {
+            result = fakeConnection.out();
+
+            assert.isObject(result.headers);
+            assert.strictEqual(fakeConnection.res.statusCode, statusCode);
+            assert.strictEqual(result.response, response404);
+        });
     });
 
     it('should respond to error:500 with a server error', () => {
@@ -53,11 +59,13 @@ describe('Error Handler Tests', () => {
             connection: fakeConnection
         });
 
-        result = fakeConnection.out();
+        process.nextTick(() => {
+            result = fakeConnection.out();
 
-        assert.isObject(result.headers);
-        assert.strictEqual(fakeConnection.res.statusCode, statusCode);
-        assert.strictEqual(result.response, response500Generic);
+            assert.isObject(result.headers);
+            assert.strictEqual(fakeConnection.res.statusCode, statusCode);
+            assert.strictEqual(result.response, response500Generic);
+        });
     });
 
     it('should respond to error:500 with a server error', () => {
@@ -71,10 +79,12 @@ describe('Error Handler Tests', () => {
             , message: message
         });
 
-        result = fakeConnection.out();
+        process.nextTick(() => {
+            result = fakeConnection.out();
 
-        assert.isObject(result.headers);
-        assert.strictEqual(fakeConnection.res.statusCode, statusCode);
-        assert.include(result.response, message);
+            assert.isObject(result.headers);
+            assert.strictEqual(fakeConnection.res.statusCode, statusCode);
+            assert.include(result.response, message);
+        });
     });
 });

@@ -16,7 +16,8 @@ describe('main route file tests', () => {
     it('should respond to route:/:get', () => {
         events.emit('route:/:get', fakeConnection);
 
-        assert.include(fakeConnection.out().response, 'Santa\'s List');
-
+        process.nextTick(() => {
+            assert.include(fakeConnection.out().response, 'Santa\'s List');
+        });
     });
 });
