@@ -7,7 +7,7 @@ const events = require('monument').events
     , families = {
         houston: {
             yearStarted: '2016'
-            , randomSeed: 11984002930839366
+            , offset: 7
             , members: [
                 'Daniel'
                 , 'Gabriel'
@@ -23,7 +23,7 @@ const events = require('monument').events
         }
         , nederland: {
             yearStarted: '2016'
-            , randomSeed: 12933561301269214
+            , offset: 7
             , members: [
                 'Daniel'
                 , 'Sarah'
@@ -39,7 +39,7 @@ const events = require('monument').events
         }
         , empty: {
             yearStarted: '2015'
-            , randomSeed: 9454413759692157
+            , offset: 7
             , members: []
         }
     };
