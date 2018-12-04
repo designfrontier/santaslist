@@ -1,9 +1,8 @@
-/* eslint-env node, mocha */
 'use strict';
 
-const assert = require('chai').assert
+const test = require('ava')
   , events = require('monument').events
-  , fakeConnection = require('../test_stubs/connectionStub')
+  , fakeConnection = require('../test_stubs/connectionStubAva')
 
   , response401 = '<!doctype html><html lang="en"> <head> </head> <body> <h1>You tried to access something you aren\'t allowed to. Punk.</h1> <h2></h2> </body></html>'
   , response404 = '<!doctype html><html lang="en"> <head> </head> <body> <h1>file not found</h1> <h2></h2> </body></html>'
@@ -12,79 +11,74 @@ const assert = require('chai').assert
 // Initialize the code to be tested
 require('./error');
 
-describe('Error Handler Tests', () => {
-  beforeEach(() => {
-    fakeConnection.reset();
-    fakeConnection.res.statusCode = 200;
+test.beforeEach(() => {
+  fakeConnection.reset();
+  fakeConnection.res.statusCode = 200;
+});
+
+test.cb('should respond to error:401 with an unauthorized message', (t) => {
+  const statusCode = 401;
+
+  fakeConnection.done(() => {
+    const result = fakeConnection.out();
+
+    t.is(typeof result.headers, 'object');
+    t.is(fakeConnection.res.statusCode, statusCode);
+    t.is(result.response, response401);
+    t.is();
   });
 
-  it('should respond to error:401 with an unauthorized message', () => {
-    const statusCode = 401;
+  events.emit('error:401', fakeConnection);
+});
 
-    let result;
+test.cb('should respond to error:404 with a missing file message', (t) => {
+  const statusCode = 404;
 
-    events.emit('error:401', fakeConnection);
+  fakeConnection.done(() => {
+    const result = fakeConnection.out();
 
-    process.nextTick(() => {
-      result = fakeConnection.out();
-
-      assert.isObject(result.headers);
-      assert.strictEqual(fakeConnection.res.statusCode, statusCode);
-      assert.strictEqual(result.response, response401);
-    });
+    t.is(typeof result.headers, 'object');
+    t.is(fakeConnection.res.statusCode, statusCode);
+    t.is(result.response, response404);
+    t.end();
   });
 
-  it('should respond to error:404 with a missing file message', () => {
-    const statusCode = 404;
+  events.emit('error:404', fakeConnection);
+});
 
-    let result;
+test.cb('should respond to error:500 with a server error', (t) => {
+  const statusCode = 500;
 
-    events.emit('error:404', fakeConnection);
+  fakeConnection.done(() => {
+    const result = fakeConnection.out();
 
-    process.nextTick(() => {
-      result = fakeConnection.out();
-
-      assert.isObject(result.headers);
-      assert.strictEqual(fakeConnection.res.statusCode, statusCode);
-      assert.strictEqual(result.response, response404);
-    });
+    t.is(typeof result.headers, 'object');
+    t.is(fakeConnection.res.statusCode, statusCode);
+    t.is(result.response, response500Generic);
+    t.end();
   });
 
-  it('should respond to error:500 with a server error', () => {
-    const statusCode = 500;
-
-    let result;
-
-    events.emit('error:500', {
-      connection: fakeConnection
-    });
-
-    process.nextTick(() => {
-      result = fakeConnection.out();
-
-      assert.isObject(result.headers);
-      assert.strictEqual(fakeConnection.res.statusCode, statusCode);
-      assert.strictEqual(result.response, response500Generic);
-    });
+  events.emit('error:500', {
+    connection: fakeConnection
   });
 
-  it('should respond to error:500 with a server error', () => {
-    const message = 'This was a bad idea'
-      , statusCode = 500;
+});
 
-    let result;
+test.cb('should respond to error:500 with a server error', (t) => {
+  const message = 'This was a bad idea'
+    , statusCode = 500;
 
-    events.emit('error:500', {
-      connection: fakeConnection
-      , message: message
-    });
+  fakeConnection.done(() => {
+    const result = fakeConnection.out();
 
-    process.nextTick(() => {
-      result = fakeConnection.out();
+    t.is(typeof result.headers, 'object');
+    t.is(fakeConnection.res.statusCode, statusCode);
+    t.true(result.response.includes(message));
+    t.end();
+  });
 
-      assert.isObject(result.headers);
-      assert.strictEqual(fakeConnection.res.statusCode, statusCode);
-      assert.include(result.response, message);
-    });
+  events.emit('error:500', {
+    connection: fakeConnection
+    , message: message
   });
 });

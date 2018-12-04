@@ -10,15 +10,20 @@
     "seedrandom": "^2.4.2"
   },
   "devDependencies": {
+    "ava": "^0.25.0",
     "chai": "^4.2.0",
     "eslint": "^5.9.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0"
   },
   "scripts": {
     "start": "node app.js",
     "pretest": "./node_modules/.bin/eslint data/*.js *.js routes/*.js lib/**/*.js test_stubs/*.js",
     "lint:fix": "./node_modules/.bin/eslint data/*.js *.js routes/*.js lib/**/*.js test_stubs/*.js --fix",
-    "test": "./node_modules/mocha/bin/mocha *.test.js lib/**/*.test.js data/*.test.js routes/*.test.js public/components/**/*.test.js --reporter spec"
+    "test": "npm run test:mocha && npm run test:ava",
+    "test:ava": "npm run test:setup && nyc ava -s *.test.js routes/**/*.test.js",
+    "test:mocha": "./node_modules/mocha/bin/mocha lib/**/*.test.js data/*.test.js public/components/**/*.test.js --reporter spec",
+    "test:setup": "./bin/test-setup.js"
   },
   "author": "",
   "license": "MIT",
