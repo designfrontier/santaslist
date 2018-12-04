@@ -1,5 +1,5 @@
 (function(){function error(it
-/**/) {
+/*``*/) {
 var out='<!doctype html><html lang="en"> <head> </head> <body> <h1>'+( it.message )+'</h1> <h2>'+( it.explanation )+'</h2> </body></html>';return out;
 }var itself=error, _encodeHTML=(function (doNotSkipEncoded) {
 		var encodeHTMLRules = { "&": "&#38;", "<": "&#60;", ">": "&#62;", '"': "&#34;", "'": "&#39;", "/": "&#47;" },

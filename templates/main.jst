@@ -1,19 +1,28 @@
 <!doctype html>
 <html lang="en">
     <head>
+        <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="app.css">
     </head>
     <body>
-        <h1>Santa's List!</h1>
-        <ol class="left">
-            {{~it.family :person:index}}
-                <li>{{=person}} =></li>
-            {{~}}
-        </ol>
-        <ol class="left">
-        {{~it.targets :person:index}}
-                <li>{{=person}}</li>
-            {{~}}
-        </ol>
+        <h1 class="heading">Santa's List!</h1>
+        <div class="pair pair--heading">
+            <div class="pair__giver">
+                Giver
+            </div>
+            <div class="pair__reciver">
+                Receiver
+            </div>
+        </div>
+        {{~it.family :pair:index}}
+            <div class="pair">
+                <div class="pair__giver">
+                    {{=pair.giver}}
+                </div>
+                <div class="pair__reciver">
+                    {{=pair.receiver}}
+                </div>
+            </div>
+        {{~}}
     </body>
 </html>
