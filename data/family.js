@@ -16,7 +16,7 @@ const events = require('monument').events
                 , 'Joel'
                 , 'Grandmommy'
                 , 'Aunt Nancy'
-                , 'Dad'
+                , 'Sarah'
                 , 'Katie'
                 , 'Aunt Susan'
             ]
