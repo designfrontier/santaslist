@@ -26,8 +26,5 @@
     "test:setup": "./bin/test-setup.js"
   },
   "author": "",
-  "license": "MIT",
-  "engines": {
-    "node": "^7.0.0"
-  }
+  "license": "MIT"
 }
