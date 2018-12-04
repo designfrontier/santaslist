@@ -16,7 +16,7 @@ test.beforeEach(() => {
   fakeConnection.res.statusCode = 200;
 });
 
-test.cb('should respond to error:401 with an unauthorized message', (t) => {
+test.skip('should respond to error:401 with an unauthorized message', (t) => {
   const statusCode = 401;
 
   fakeConnection.done(() => {
