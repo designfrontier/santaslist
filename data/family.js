@@ -48,6 +48,8 @@ const events = require('monument').events
         , 'Caleb'
         , 'Joel'
         , 'Amy'
+        , 'Steve'
+        , 'Katie'
       ]
     }
     , empty: {
