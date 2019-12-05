@@ -37,6 +37,19 @@ const events = require('monument').events
         , 'Katie'
       ]
     }
+    , siblings: {
+      yearStarted: '2019'
+      , offset: 3
+      , members: [
+        'Daniel'
+        , 'Sarah'
+        , 'Gabriel'
+        , 'Rachel'
+        , 'Caleb'
+        , 'Joel'
+        , 'Amy'
+      ]
+    }
     , empty: {
       yearStarted: '2015'
       , offset: 7
