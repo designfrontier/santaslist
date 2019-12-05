@@ -1,14 +1,15 @@
 'use strict';
 
 const events = require('monument').events
-  , cache = require('node-cached');
+  , cache = require('node-cached')
+  , generateOffset = require('../lib/generate-offset');
 
 events.on('data:get:receivers', (dataIn) => {
   const cached = cache.get(`data.receivers.${dataIn.id}`);
   let receivers = [].concat(dataIn.family.members);
 
   if (cached === null) {
-    for (let y = 0; y <= new Date().getFullYear() + dataIn.family.offset - +dataIn.family.yearStarted; y++) {
+    for (let y = 0; y <= generateOffset(+dataIn.family.offset, +dataIn.family.yearStarted); y++) {
       receivers = [].concat(receivers.pop(), receivers);
     }
 
