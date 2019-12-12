@@ -5,7 +5,7 @@ const test = require('ava')
       , events = require('monument').events
       , fakeConnection = require('../test_stubs/connectionStub');
 
-require('./g/:id');
+require('./g');
 
 test.beforeEach(() => {
   fakeConnection.reset();
