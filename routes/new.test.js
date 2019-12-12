@@ -3,7 +3,7 @@
 
 const test = require('ava')
       , events = require('monument').events
-      , fakeConnection = require('../test_stubs/connectionStub');
+      , fakeConnection = require('../test_stubs/connectionStubAva');
 
 require('./new');
 
