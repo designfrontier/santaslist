@@ -17,6 +17,7 @@
     "nyc": "^13.1.0"
   },
   "scripts": {
+    "prestart": "dottojs -s templates -d templates",
     "start": "node app.js",
     "pretest": "./node_modules/.bin/eslint data/*.js *.js routes/*.js lib/**/*.js test_stubs/*.js",
     "lint:fix": "./node_modules/.bin/eslint data/*.js *.js routes/*.js lib/**/*.js test_stubs/*.js --fix",

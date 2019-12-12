@@ -19,7 +19,7 @@ emitter.on('error:404', (connection) => {
   connection.res.statusCode = errorCode;
   connection.res.send(errorTemplate({
     message: 'file not found'
-    , explanation: ''
+    , explanation: connection.req.headers.host
   }));
 });
 
