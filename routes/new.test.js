@@ -1,9 +1,9 @@
 /* eslint-env node, mocha */
 'use strict';
 
-const test = require('ava'),
-      events = require('monument').events,
-      fakeConnection = require('../test_stubs/connectionStub');
+const test = require('ava')
+      , events = require('monument').events
+      , fakeConnection = require('../test_stubs/connectionStub');
 
 require('./new');
 
