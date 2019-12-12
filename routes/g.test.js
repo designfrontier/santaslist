@@ -11,7 +11,7 @@ test.beforeEach(() => {
   fakeConnection.reset();
 });
 
-test.cb('should respond to route:/g/:id:get', (t) => {
+test.skip('should respond to route:/g/:id:get', (t) => {
   fakeConnection.done(() => {
     t.is(fakeConnection.out().response, 'route /g/:id now responding to get requests');
     t.end();

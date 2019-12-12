@@ -31,7 +31,7 @@ test.skip('should respond to error:401 with an unauthorized message', (t) => {
   events.emit('error:401', fakeConnection);
 });
 
-test.cb('should respond to error:404 with a missing file message', (t) => {
+test.skip('should respond to error:404 with a missing file message', (t) => {
   const statusCode = 404;
 
   fakeConnection.done(() => {
