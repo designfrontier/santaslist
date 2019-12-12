@@ -5,6 +5,12 @@
     padding-top: 2rem;
 }
 
+p {
+    max-width: 22rem;
+    margin: 0 auto;
+    padding-top: 2rem;
+}
+
 .pair {
     display: flex;
     max-width: 22rem;
@@ -20,4 +26,15 @@
     font-size: 1.5rem;
     font-weight: bold;
     border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+form {
+    max-width: 22rem;
+    padding: 1.5rem 1rem 0.125rem;
+    margin:0 auto;
+}
+
+label {
+    display: block;
+    padding-bottom: .6rem;
 }
