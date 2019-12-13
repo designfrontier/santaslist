@@ -4,17 +4,17 @@
   "description": "a quick and dirty gift exchange manager for the family",
   "main": "app.js",
   "dependencies": {
-    "dot": "^1.0.3",
+    "dot": "1.1.3",
     "monument": "^5.3.0",
-    "node-cached": "^1.0.0",
-    "seedrandom": "^2.4.2"
+    "node-cached": "1.1.0",
+    "seedrandom": "3.0.5"
   },
   "devDependencies": {
     "ava": "^0.25.0",
     "chai": "^4.2.0",
-    "eslint": "^5.9.0",
-    "mocha": "^5.2.0",
-    "nyc": "^13.1.0"
+    "eslint": "6.7.2",
+    "mocha": "6.2.2",
+    "nyc": "14.1.1"
   },
   "scripts": {
     "prestart": "dottojs -s templates -d templates",

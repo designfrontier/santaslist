@@ -1,0 +1,10 @@
+version: "3"
+services:
+  web:
+    build: .
+    ports:
+      - "1337:1337"
+    environment:
+      VIRTUAL_HOST: df.docker
+      VIRTUAL_PORT: 1337
+      NODE_ENV: development
